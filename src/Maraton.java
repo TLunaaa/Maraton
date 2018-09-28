@@ -10,21 +10,22 @@ public class Maraton {
 		for (int i = 0; i < rand.nextInt((max - min) + 1) + min; i++) {
 			Corredor aux = new Corredor();
 			asignarPosicion(aux);
-			System.out.println(aux);
+			//System.out.println(aux);
 		}
 	}
 	
 	public void asignarPosicion(Corredor corredor) {
 		int posicion = funcionHash(corredor.getDNI());
-		int iniPos = posicion;
+		int iniPos = posicion; boolean move = false;
 		while (this.cupo[posicion]!=null){
 			if (posicion < 12000)
 				posicion++;
 			else
 				posicion=0;
+			move = true;
 		}
-		if (posicion != iniPos) {
-		this.cupo[posicion] = corredor;
+		if ((move && posicion != iniPos)||(!move)) {
+			this.cupo[posicion] = corredor;
 			System.out.println("Se ha cargado el corredor #"+posicion);
 		}
 		else {
@@ -34,15 +35,16 @@ public class Maraton {
 	
 	public void revocarPos(Corredor corredor) {
 		int posicion = funcionHash(corredor.getDNI());
-		int iniPos = posicion;
+		int iniPos = posicion; boolean move = false;
 		if (this.cupo[posicion]!=null) {		
-			while (this.cupo[posicion]!=null && corredor.getDNI()!=this.cupo[posicion].getDNI() && iniPos!=posicion+1) {
+			while (this.cupo[posicion]!=null && corredor.getDNI()!=this.cupo[posicion].getDNI() && (move && posicion != iniPos)||(!move)) {
 				if (posicion < 12000)
 					posicion++;
 				else
 					posicion=0;
+				move = true;
 			}
-			if (this.cupo[posicion]!=null && corredor.getDNI()!=this.cupo[posicion].getDNI() && iniPos!=posicion) {
+			if (this.cupo[posicion]!=null && corredor.getDNI()!=this.cupo[posicion].getDNI() && (move && posicion != iniPos)||(!move)) {
 				this.cupo[posicion] = null;
 				System.out.println("Se ha quitado el corredor #"+posicion);
 			}
