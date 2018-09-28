@@ -1,12 +1,12 @@
 import java.util.Random;
 
-public class Corredor {
+public class Corredor  implements Comparable{
 	private int DNI = -1;
 	private String nombre;
 	private String sexo;
 	private int edad;
-	private String categoria;  //categegoria 5KM,10KM,20KM
-	private int time=-1;
+	private String categoria;  //categoria 5KM,10KM,20KM
+	private int time;
 	
 	
 	public Corredor() {
@@ -18,7 +18,7 @@ public class Corredor {
 			this.sexo = "Masculino";
 		}else
 			this.sexo = "Femenino";
-		this.edad = rand.nextInt(60);
+		this.edad = rand.nextInt((60-15)+1)+15;
 		switch(rand.nextInt(3)) {
 			case 0:this.categoria = "5km"; break;
 			case 1:this.categoria = "10km"; break;
@@ -39,8 +39,13 @@ public class Corredor {
 	public String getCategoria() {
 		return categoria;
 	}
+	
+	
+	public int getTime() {
+		return time;
+	}
 
-	public String getTime() {
+	public String mostrarTiempo() {
 		String tiempo;
 		int horas,minutos,segundos;
 		double hour = ((double)this.time)/3600;
@@ -74,14 +79,12 @@ public class Corredor {
 		this.time = time;
 	}
 
-	
-
 	@Override
 	public String toString() {
-		return "[DNI=" + DNI + ", nombre=" + nombre + ", sexo=" + sexo + ", edad=" + edad + ", categoria="
-				+ categoria + ", time=" + time + "]";
+		return "Corredor [DNI=" + DNI + ", nombre=" + nombre + ", sexo=" + sexo + ", edad=" + edad + ", categoria="
+				+ categoria + "tiempo=" + this.mostrarTiempo()+"]";
 	}
-
+	
 	@Override
 	public int compareTo(Object arg0) {
 		Corredor otro =(Corredor) arg0;
@@ -90,6 +93,5 @@ public class Corredor {
 		{	if (this.getTime()>otro.getTime()) aux = 1; else aux = -1;	}
 		return aux;
 	}
-	
 	
 }
