@@ -1,12 +1,12 @@
 import java.util.Random;
 
 public class Corredor {
-	private int DNI;
+	private int DNI = -1;
 	private String nombre;
 	private String sexo;
 	private int edad;
 	private String categoria;  //categegoria 5KM,10KM,20KM
-	private int time;
+	private int time=-1;
 	
 	
 	public Corredor() {
