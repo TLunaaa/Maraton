@@ -6,7 +6,7 @@ public class Corredor {
 	private String sexo;
 	private int edad;
 	private String categoria;  //categegoria 5KM,10KM,20KM
-	private int time=-1;
+	private int time=-1; //segundos
 	
 	
 	public Corredor() {
@@ -36,6 +36,25 @@ public class Corredor {
 	}
 	
 	
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public String getTime() {
+		String tiempo;
+		int horas,minutos,segundos;
+		double hour = ((double)this.time)/3600;
+		double minutes;
+		double seconds;
+		horas = (int)hour;
+		minutes=((hour - horas)*60);
+		minutos = (int)minutes;
+		seconds = (minutes-minutos)*60;
+		segundos = (int)seconds;
+		tiempo = horas+":"+minutos+":"+segundos;
+		return tiempo;
+	}
+
 	public int getDNI() {
 		return DNI;
 	}
@@ -49,6 +68,10 @@ public class Corredor {
 			nombre +="" +(char)num;
 		}
 		return nombre;
+	}	
+
+	public void setTime(int time) {
+		this.time = time;
 	}
 
 	@Override
