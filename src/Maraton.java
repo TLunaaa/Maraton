@@ -44,7 +44,7 @@ public class Maraton {
 					posicion=0;
 				move = true;
 			}
-			if (this.cupo[posicion]!=null && corredor.getDNI()!=this.cupo[posicion].getDNI() && ((move && posicion != iniPos)||(!move))) {
+			if (this.cupo[posicion]!=null && corredor.getDNI()==this.cupo[posicion].getDNI() && ((move && posicion != iniPos)||(!move))) {
 				this.cupo[posicion] = null;
 				System.out.println("Se ha quitado el corredor #"+posicion);
 			}
@@ -69,6 +69,15 @@ public class Maraton {
 		for (int i=0;i<maxCorredores;i++) {
 			if (this.cupo[i]!=null) {
 				System.out.println("Corredor #"+i+" "+this.cupo[i]);
+			}
+		}
+	}
+	
+	public void listarColisiones() {
+		for (int i=0;i<maxCorredores;i++) {
+			if (this.cupo[i]!=null) {
+				if (funcionHash(cupo[i].getDNI())!=i)
+					System.out.println("Corredor ###"+i+" "+ funcionHash(cupo[i].getDNI()));
 			}
 		}
 	}
