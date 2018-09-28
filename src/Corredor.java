@@ -1,11 +1,11 @@
 
 public class Corredor {
-	private int DNI;
+	private int DNI = -1;
 	private String nombre;
 	private String sexo;
 	private int edad;
 	private String categoria;
-	private int time;
+	private int time=-1;
 	
 	
 	public Corredor(int dNI, String nombre, String sexo, int edad, String categoria) {
@@ -20,8 +20,10 @@ public class Corredor {
 	public int getDNI() {
 		return DNI;
 	}
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "[DNI=" + DNI + ", nombre=" + nombre + ", sexo=" + sexo + ", edad=" + edad + ", categoria="
+				+ categoria + ", tiempo=" + time + "]";
+	}
 }
