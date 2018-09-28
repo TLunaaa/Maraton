@@ -13,7 +13,6 @@ public class Prueba {
 		maraton.revocarPos(corredor2);
 		maraton.finalizarCarrera();
 		maraton.listarCorredores();
-		
 	}
 
 }
