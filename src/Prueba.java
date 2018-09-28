@@ -11,8 +11,9 @@ public class Prueba {
 		maraton.asignarPosicion(corredor2);
 		maraton.asignarPosicion(corredor3);
 		maraton.revocarPos(corredor2);
-		maraton.finalizarCarrera();
-		maraton.listarCorredores();
+		//maraton.listarColisiones();
+		//maraton.listarCorredores();
+		maraton.listTimeLowHigh();
 	}
 
 }

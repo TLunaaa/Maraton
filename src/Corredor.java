@@ -74,10 +74,21 @@ public class Corredor {
 		this.time = time;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "Corredor [DNI=" + DNI + ", nombre=" + nombre + ", sexo=" + sexo + ", edad=" + edad + ", categoria="
-				+ categoria + "]";
+		return "[DNI=" + DNI + ", nombre=" + nombre + ", sexo=" + sexo + ", edad=" + edad + ", categoria="
+				+ categoria + ", time=" + time + "]";
+	}
+
+	@Override
+	public int compareTo(Object arg0) {
+		Corredor otro =(Corredor) arg0;
+		int aux;
+		if (this.getTime()==otro.getTime()) aux = 0; else
+		{	if (this.getTime()>otro.getTime()) aux = 1; else aux = -1;	}
+		return aux;
 	}
 	
 	

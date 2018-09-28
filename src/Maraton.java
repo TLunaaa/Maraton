@@ -1,4 +1,10 @@
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Random;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class Maraton {
 	private int maxCorredores=12000;
@@ -108,5 +114,16 @@ public class Maraton {
 					System.out.println("Corredor ###"+i+" "+ funcionHash(cupo[i].getDNI()));
 			}
 		}
+	}
+	
+	public void listTimeLowHigh() {
+		SortedSet<Corredor> set = new TreeSet<>(
+		        Comparator.comparing(Corredor::getTime));
+		for (int i=0;i<maxCorredores;i++) {
+			if (this.cupo[i]!=null) {
+				set.add(this.cupo[i]);
+			}
+		}
+		set.forEach(System.out::println);
 	}
 }
