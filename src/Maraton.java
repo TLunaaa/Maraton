@@ -68,8 +68,36 @@ public class Maraton {
 	public void listarCorredores() {
 		for (int i=0;i<maxCorredores;i++) {
 			if (this.cupo[i]!=null) {
-				System.out.println("Corredor #"+i+" "+this.cupo[i]);
+				System.out.println("Corredor #"+i+" "+this.cupo[i] + this.cupo[i].getTime());
 			}
 		}
+	}
+	
+	public void finalizarCarrera(){
+		int time;
+		
+		for (int i=0;i<maxCorredores;i++) {
+			if (this.cupo[i]!=null) {
+				time = establecerTiempo(this.cupo[i].getCategoria());
+				this.cupo[i].setTime(time);
+			}
+		}
+	}
+	
+	private int establecerTiempo(String categoria) {
+		Random rand = new Random();
+		int min,max;
+		if(categoria.equals("5km")) {
+			min = 900;
+			max = 1800;
+		}else if(categoria.equals("10km")){
+			min = 1800;
+			max = 3600;
+		}else {
+			min = 4200;
+			max = 7200;
+		}
+		return rand.nextInt((max-min)+1)+min;
+		
 	}
 }
