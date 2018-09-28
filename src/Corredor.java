@@ -1,12 +1,12 @@
 import java.util.Random;
 
-public class Corredor {
+public class Corredor  implements Comparable{
 	private int DNI = -1;
 	private String nombre;
 	private String sexo;
 	private int edad;
 	private String categoria;  //categoria 5KM,10KM,20KM
-	private int time=-1;
+	private int time;
 	
 	
 	public Corredor() {
@@ -14,6 +14,7 @@ public class Corredor {
 		Random rand = new Random();
 		this.DNI = rand.nextInt((max - min) + 1) + min;
 		this.nombre = nombreRandom();
+		this.time=rand.nextInt((300) + 1);
 		if(rand.nextInt(2) == 0) {
 			this.sexo = "Masculino";
 		}else
@@ -40,6 +41,11 @@ public class Corredor {
 		return DNI;
 	}
 	
+		
+	public int getTime() {
+		return time;
+	}
+
 	private String nombreRandom(){
 		int max=122,min=48;
 		String nombre = "";
@@ -51,10 +57,21 @@ public class Corredor {
 		return nombre;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "Corredor [DNI=" + DNI + ", nombre=" + nombre + ", sexo=" + sexo + ", edad=" + edad + ", categoria="
-				+ categoria + "]";
+		return "[DNI=" + DNI + ", nombre=" + nombre + ", sexo=" + sexo + ", edad=" + edad + ", categoria="
+				+ categoria + ", time=" + time + "]";
+	}
+
+	@Override
+	public int compareTo(Object arg0) {
+		Corredor otro =(Corredor) arg0;
+		int aux;
+		if (this.getTime()==otro.getTime()) aux = 0; else
+		{	if (this.getTime()>otro.getTime()) aux = 1; else aux = -1;	}
+		return aux;
 	}
 	
 	
