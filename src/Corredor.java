@@ -5,7 +5,7 @@ public class Corredor {
 	private String nombre;
 	private String sexo;
 	private int edad;
-	private String categoria;  //categegoria 5KM,10KM,20KM
+	private String categoria;  //categoria 5KM,10KM,20KM
 	private int time=-1;
 	
 	
